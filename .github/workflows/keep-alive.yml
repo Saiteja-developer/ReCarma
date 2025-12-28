@@ -1,0 +1,15 @@
+name: Keep Backend & MongoDB Alive
+
+on:
+  schedule:
+    - cron: "0 0 */20 * *"   # every 20 days at 00:00 UTC
+  workflow_dispatch:        # allow manual run
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping Render backend health endpoint
+        run: |
+          curl -X GET https://recarma-backend.onrender.com/api/health

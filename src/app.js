@@ -7,6 +7,8 @@ const authRoutes = require("./routes/auth.routes");
 const vehicleRoutes = require("./routes/vehicle.routes");
 const pickupRoutes = require("./routes/pickup.routes");
 const documentRoutes = require("./routes/document.routes");
+const healthRoutes = require("./routes/health.routes");
+
 
 const path = require("path");
 
@@ -15,6 +17,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/health", healthRoutes);
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
