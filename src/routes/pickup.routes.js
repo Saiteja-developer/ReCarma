@@ -10,6 +10,6 @@ const { authorize } = require("../middlewares/role.middleware");
 const router = express.Router();
 
 router.post("/", protect, schedulePickup);
-router.get("/", protect, authorize("ADMIN"), getAllPickups);
+router.get("/", protect, authorize("ADMIN", "DEALER"), getAllPickups);
 
 module.exports = router;
